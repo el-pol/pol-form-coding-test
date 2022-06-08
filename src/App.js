@@ -2,15 +2,13 @@ import React from 'react';
 import {
   ChakraProvider,
   Box,
-  Text,
-  Link,
   VStack,
-  Code,
   Grid,
   theme,
   Heading,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
+import FormCommon from './components/FormCommon';
 
 function App() {
   return (
@@ -20,6 +18,7 @@ function App() {
           <ColorModeSwitcher justifySelf="flex-end" />
           <VStack spacing={8}>
             <Heading>Nice form</Heading>
+            <FormCommon />
           </VStack>
         </Grid>
       </Box>
