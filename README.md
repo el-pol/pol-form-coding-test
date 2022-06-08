@@ -1,4 +1,5 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Choice of stack
+I chose `create-react-app` with Chakra UI. I am very comfortable working with React. I wanted the UI to look clean and not spend too much time on styling, that's also why I chose Chakra. I've used it in the past with personal projects. The goal for me was to set up something fast & usable that looks nice without too much effort, hence my choice. If this were a professional project, I would have used TypeScript as well.
 
 ## Available Scripts
 
