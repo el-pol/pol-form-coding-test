@@ -8,19 +8,22 @@ import {
 } from '@chakra-ui/react';
 
 const FormCommon = () => {
-  const validateName = value => {
+  const checkEmpty = value => {
     let error;
     if (!value) {
-      error = 'Name is required';
-    } else if (value.toLowerCase() !== 'naruto') {
-      error = "Jeez! You're not a fan 😱";
+      error = 'Please fill out this field';
     }
     return error;
   };
 
   return (
     <Formik
-      initialValues={{ countryOfWork: '', firstName: '' }}
+      initialValues={{
+        countryOfWork: '',
+        firstName: '',
+        lastName: '',
+        dob: '2000-01-01',
+      }}
       onSubmit={(values, actions) => {
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
@@ -30,7 +33,7 @@ const FormCommon = () => {
     >
       {props => (
         <Form>
-          <Field name="countryOfWork" validate={validateName}>
+          <Field name="countryOfWork" validate={checkEmpty}>
             {({ field, form }) => (
               <FormControl
                 isInvalid={
@@ -47,7 +50,7 @@ const FormCommon = () => {
               </FormControl>
             )}
           </Field>
-          <Field name="firstName" validate={validateName}>
+          <Field name="firstName" validate={checkEmpty}>
             {({ field, form }) => (
               <FormControl
                 isInvalid={form.errors.firstName && form.touched.firstName}
@@ -55,6 +58,31 @@ const FormCommon = () => {
                 <FormLabel htmlFor="country-of-work">First name</FormLabel>
                 <Input {...field} id="first-name" placeholder="First name" />
                 <FormErrorMessage>{form.errors.firstName}</FormErrorMessage>
+              </FormControl>
+            )}
+          </Field>
+          <Field name="lastName" validate={checkEmpty}>
+            {({ field, form }) => (
+              <FormControl
+                isInvalid={form.errors.lastName && form.touched.lastName}
+              >
+                <FormLabel htmlFor="last-name">Last name</FormLabel>
+                <Input {...field} id="last-name" placeholder="Last name" />
+                <FormErrorMessage>{form.errors.lastName}</FormErrorMessage>
+              </FormControl>
+            )}
+          </Field>
+          <Field name="dob" validate={checkEmpty}>
+            {({ field, form }) => (
+              <FormControl isInvalid={form.errors.dob && form.touched.dob}>
+                <FormLabel htmlFor="dob">Date of birth</FormLabel>
+                <Input
+                  type="date"
+                  {...field}
+                  id="dob"
+                  placeholder="Date of birth"
+                />
+                <FormErrorMessage>{form.errors.dob}</FormErrorMessage>
               </FormControl>
             )}
           </Field>
