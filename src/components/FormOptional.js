@@ -19,6 +19,7 @@ const FormOptional = ({
   isWorkingHours,
   isNumberOfChildren,
 }) => {
+  // Typical values, can be changed to whatever you want
   const status = ['Married', 'Single', 'Divorced'];
 
   return (
@@ -35,7 +36,7 @@ const FormOptional = ({
               <FormLabel htmlFor="social-number">
                 Social insurance number
               </FormLabel>
-              <NumberInput id="social-number">
+              <NumberInput id="social-number" min={0}>
                 <NumberInputField
                   {...field}
                   id="social-number"
@@ -56,11 +57,11 @@ const FormOptional = ({
               isInvalid={form.errors.workingHours && form.touched.workingHours}
             >
               <FormLabel htmlFor="working-hours">Working hours</FormLabel>
-              <NumberInput id="working-hours">
+              <NumberInput id="working-hours" min={0}>
                 <NumberInputField
                   {...field}
                   id="working-hours"
-                  placeholder="In number of days"
+                  placeholder="In number of hours"
                 />
               </NumberInput>
               <FormErrorMessage>{form.errors.workingHours}</FormErrorMessage>
@@ -79,7 +80,7 @@ const FormOptional = ({
               <FormLabel htmlFor="number-children">
                 Number of children
               </FormLabel>
-              <NumberInput id="number-children">
+              <NumberInput id="number-children" min={0}>
                 <NumberInputField
                   {...field}
                   id="number-children"
