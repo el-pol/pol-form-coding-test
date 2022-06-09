@@ -26,6 +26,41 @@ const FormCommon = () => {
     return error;
   };
 
+  const handleValidation = values => {
+    const errors = {};
+    if (!values.countryOfWork) {
+      errors.countryOfWork = 'Please select your country of work.';
+    }
+    if (!values.firstName) {
+      errors.firstName = 'Please enter your first name.';
+    }
+    if (!values.lastName) {
+      errors.lastName = 'Please enter your last name.';
+    }
+    if (values.dob === '2000-01-01') {
+      errors.dob = 'Please enter your date of birth.';
+    }
+
+    if (values.countryOfWork === 'Spain' && values.holidayAllowance < 30) {
+      errors.holidayAllowance =
+        'Please enter a value greater than 30 if your country is Spain.';
+    } else if (
+      values.countryOfWork === 'Brazil' &&
+      values.holidayAllowance > 40
+    ) {
+      errors.holidayAllowance =
+        'Please enter a value smaller than 40 if your country is Brazil.';
+    } else {
+      errors.holidayAllowance = 'Please enter a value';
+    }
+
+    if (values.countryOfWork === 'Ghana' && !values.maritalStatus) {
+      errors.maritalStatus = 'Please select your marital status.';
+    }
+    console.log(errors);
+    return errors;
+  };
+
   return (
     <Formik
       initialValues={{
@@ -34,7 +69,12 @@ const FormCommon = () => {
         lastName: '',
         dob: '2000-01-01',
         holidayAllowance: '',
+        socialInsuranceNumber: '',
+        workingHours: '',
+        numberOfChildren: '',
+        maritalStatus: '',
       }}
+      validate={handleValidation}
       onSubmit={(values, actions) => {
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
@@ -44,7 +84,7 @@ const FormCommon = () => {
     >
       {props => (
         <Form>
-          <Field name="countryOfWork" validate={checkEmpty}>
+          <Field name="countryOfWork">
             {({ field, form }) => (
               <FormControl
                 isInvalid={
@@ -67,7 +107,7 @@ const FormCommon = () => {
               </FormControl>
             )}
           </Field>
-          <Field name="firstName" validate={checkEmpty}>
+          <Field name="firstName">
             {({ field, form }) => (
               <FormControl
                 isInvalid={form.errors.firstName && form.touched.firstName}
@@ -78,7 +118,7 @@ const FormCommon = () => {
               </FormControl>
             )}
           </Field>
-          <Field name="lastName" validate={checkEmpty}>
+          <Field name="lastName">
             {({ field, form }) => (
               <FormControl
                 isInvalid={form.errors.lastName && form.touched.lastName}
@@ -89,7 +129,7 @@ const FormCommon = () => {
               </FormControl>
             )}
           </Field>
-          <Field name="dob" validate={checkEmpty}>
+          <Field name="dob">
             {({ field, form }) => (
               <FormControl isInvalid={form.errors.dob && form.touched.dob}>
                 <FormLabel htmlFor="dob">Date of birth</FormLabel>
@@ -103,7 +143,7 @@ const FormCommon = () => {
               </FormControl>
             )}
           </Field>
-          <Field name="holidayAllowance" validate={checkEmpty}>
+          <Field name="holidayAllowance">
             {({ field, form }) => (
               <FormControl
                 isInvalid={
