@@ -12,14 +12,16 @@ import {
   Select,
   NumberInputField,
 } from '@chakra-ui/react';
+import FormOptional from './FormOptional';
 
 const FormCommon = () => {
   const countries = ['Spain', 'Ghana', 'Brazil'];
+  const countriesWithMaritalStatus = ['Spain', 'Ghana'];
 
   const checkEmpty = value => {
     let error;
     if (!value) {
-      error = 'Please fill out this field';
+      error = 'Please fill out this field.';
     }
     return error;
   };
@@ -115,7 +117,7 @@ const FormCommon = () => {
                   <NumberInputField
                     {...field}
                     id="holiday-allowance"
-                    placeholder="Holiday allowance"
+                    placeholder="In number of days"
                   />
                   <NumberInputStepper>
                     <NumberIncrementStepper />
@@ -128,6 +130,15 @@ const FormCommon = () => {
               </FormControl>
             )}
           </Field>
+          <FormOptional
+            isSocialInsurance={props.values.countryOfWork === 'Spain'}
+            isMarital={countriesWithMaritalStatus.includes(
+              props.values.countryOfWork
+            )}
+            isNumberOfChildren={props.values.countryOfWork === 'Ghana'}
+            isWorkingHours={props.values.countryOfWork === 'Brazil'}
+            selectedCountry={props.values.countryOfWork}
+          />
           <Button
             mt={4}
             colorScheme="teal"
