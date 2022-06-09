@@ -40,7 +40,7 @@ const FormOptional = ({
                 <NumberInputField
                   {...field}
                   id="social-number"
-                  placeholder="In number of days"
+                  placeholder="Your social insurance number"
                 />
               </NumberInput>
               <FormErrorMessage>
