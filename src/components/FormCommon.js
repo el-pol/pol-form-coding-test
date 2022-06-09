@@ -153,7 +153,7 @@ const FormCommon = () => {
                 <FormLabel htmlFor="holiday-allowance">
                   Holiday allowance
                 </FormLabel>
-                <NumberInput id="holiday-allowance">
+                <NumberInput id="holiday-allowance" min={0}>
                   <NumberInputField
                     {...field}
                     id="holiday-allowance"
