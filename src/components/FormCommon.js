@@ -111,7 +111,7 @@ const FormCommon = () => {
                 <FormLabel htmlFor="holiday-allowance">
                   Holiday allowance
                 </FormLabel>
-                <NumberInput>
+                <NumberInput id="holiday-allowance">
                   <NumberInputField
                     {...field}
                     id="holiday-allowance"
