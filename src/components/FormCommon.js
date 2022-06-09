@@ -17,6 +17,7 @@ import FormOptional from './FormOptional';
 const FormCommon = () => {
   const countries = ['Spain', 'Ghana', 'Brazil'];
   const countriesWithMaritalStatus = ['Spain', 'Ghana'];
+  const defaultDob = '2022-01-01';
 
   const handleValidation = values => {
     const errors = {};
@@ -29,7 +30,7 @@ const FormCommon = () => {
     if (!values.lastName) {
       errors.lastName = 'Please enter your last name.';
     }
-    if (values.dob === '2000-01-01') {
+    if (values.dob === defaultDob) {
       errors.dob = 'Please enter your date of birth.';
     }
 
@@ -42,14 +43,14 @@ const FormCommon = () => {
     ) {
       errors.holidayAllowance =
         'Please enter a value smaller than 40 if your country is Brazil.';
-    } else {
+    } else if (!values.holidayAllowance) {
       errors.holidayAllowance = 'Please enter a value';
     }
 
     if (values.countryOfWork === 'Ghana' && !values.maritalStatus) {
       errors.maritalStatus = 'Please select your marital status.';
     }
-    console.log(errors);
+
     return errors;
   };
 
@@ -59,7 +60,7 @@ const FormCommon = () => {
         countryOfWork: '',
         firstName: '',
         lastName: '',
-        dob: '2000-01-01',
+        dob: defaultDob,
         holidayAllowance: '',
         socialInsuranceNumber: '',
         workingHours: '',
