@@ -1,6 +1,9 @@
 ## Choice of stack
 I chose `create-react-app` with Chakra UI. I am very comfortable working with React. I wanted the UI to look clean and not spend too much time on styling, that's also why I chose Chakra. I've used it in the past with personal projects. The goal for me was to set up something fast & usable that looks nice without too much effort, hence my choice. If this were a professional project, I would have used TypeScript as well.
 
+## Notes
+- The task said *there are three countries to handle*. But I was not sure if this meant three special cases, or three countries in total. I assumed we only have 3 options in total. You can see that in the selector we only have those three countries (Spain, Ghana, Brazil). If this is not the case, what we would do is populate the selector with a list of countries. I would have checked the Internet for a pre-made list and just added it here.
+
 ## Available Scripts
 
 In the project directory, you can run:
