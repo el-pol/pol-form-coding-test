@@ -5,9 +5,12 @@ import {
   FormLabel,
   Input,
   FormErrorMessage,
+  Select,
 } from '@chakra-ui/react';
 
 const FormCommon = () => {
+  const countries = ['Spain', 'Ghana', 'Brazil'];
+
   const checkEmpty = value => {
     let error;
     if (!value) {
@@ -23,7 +26,7 @@ const FormCommon = () => {
         firstName: '',
         lastName: '',
         dob: '2000-01-01',
-        holidayAllowance: null,
+        holidayAllowance: '',
       }}
       onSubmit={(values, actions) => {
         setTimeout(() => {
@@ -42,11 +45,17 @@ const FormCommon = () => {
                 }
               >
                 <FormLabel htmlFor="country-of-work">Country of work</FormLabel>
-                <Input
+                <Select
                   {...field}
                   id="country-of-work"
-                  placeholder="The country you will work from"
-                />
+                  placeholder="Select country"
+                >
+                  {countries.map(country => (
+                    <option key={country} value={country}>
+                      {country}
+                    </option>
+                  ))}
+                </Select>
                 <FormErrorMessage>{form.errors.countryOfWork}</FormErrorMessage>
               </FormControl>
             )}
