@@ -4,8 +4,13 @@ import {
   FormControl,
   FormLabel,
   Input,
+  NumberInput,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
   FormErrorMessage,
   Select,
+  NumberInputField,
 } from '@chakra-ui/react';
 
 const FormCommon = () => {
@@ -106,12 +111,17 @@ const FormCommon = () => {
                 <FormLabel htmlFor="holiday-allowance">
                   Holiday allowance
                 </FormLabel>
-                <Input
-                  type="number"
-                  {...field}
-                  id="holiday-allowance"
-                  placeholder="Holiday allowance"
-                />
+                <NumberInput>
+                  <NumberInputField
+                    {...field}
+                    id="holiday-allowance"
+                    placeholder="Holiday allowance"
+                  />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
                 <FormErrorMessage>
                   {form.errors.holidayAllowance}
                 </FormErrorMessage>
