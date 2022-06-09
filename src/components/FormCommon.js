@@ -18,14 +18,6 @@ const FormCommon = () => {
   const countries = ['Spain', 'Ghana', 'Brazil'];
   const countriesWithMaritalStatus = ['Spain', 'Ghana'];
 
-  const checkEmpty = value => {
-    let error;
-    if (!value) {
-      error = 'Please fill out this field.';
-    }
-    return error;
-  };
-
   const handleValidation = values => {
     const errors = {};
     if (!values.countryOfWork) {
