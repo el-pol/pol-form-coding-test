@@ -23,6 +23,7 @@ const FormCommon = () => {
         firstName: '',
         lastName: '',
         dob: '2000-01-01',
+        holidayAllowance: null,
       }}
       onSubmit={(values, actions) => {
         setTimeout(() => {
@@ -83,6 +84,28 @@ const FormCommon = () => {
                   placeholder="Date of birth"
                 />
                 <FormErrorMessage>{form.errors.dob}</FormErrorMessage>
+              </FormControl>
+            )}
+          </Field>
+          <Field name="holidayAllowance" validate={checkEmpty}>
+            {({ field, form }) => (
+              <FormControl
+                isInvalid={
+                  form.errors.holidayAllowance && form.touched.holidayAllowance
+                }
+              >
+                <FormLabel htmlFor="holiday-allowance">
+                  Holiday allowance
+                </FormLabel>
+                <Input
+                  type="number"
+                  {...field}
+                  id="holiday-allowance"
+                  placeholder="Holiday allowance"
+                />
+                <FormErrorMessage>
+                  {form.errors.holidayAllowance}
+                </FormErrorMessage>
               </FormControl>
             )}
           </Field>
