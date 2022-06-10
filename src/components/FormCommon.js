@@ -113,7 +113,7 @@ const FormCommon = () => {
                 isInvalid={form.errors.firstName && form.touched.firstName}
               >
                 <FormLabel htmlFor="country-of-work">First name</FormLabel>
-                <Input {...field} id="first-name" placeholder="First name" />
+                <Input {...field} id="first-name" placeholder="John" />
                 <FormErrorMessage>{form.errors.firstName}</FormErrorMessage>
               </FormControl>
             )}
@@ -124,7 +124,7 @@ const FormCommon = () => {
                 isInvalid={form.errors.lastName && form.touched.lastName}
               >
                 <FormLabel htmlFor="last-name">Last name</FormLabel>
-                <Input {...field} id="last-name" placeholder="Last name" />
+                <Input {...field} id="last-name" placeholder="Doe" />
                 <FormErrorMessage>{form.errors.lastName}</FormErrorMessage>
               </FormControl>
             )}
