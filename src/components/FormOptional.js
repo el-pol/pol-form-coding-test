@@ -11,6 +11,7 @@ import {
   FormErrorMessage,
   Select,
   NumberInputField,
+  Fade,
 } from '@chakra-ui/react';
 
 const FormOptional = ({
@@ -25,103 +26,113 @@ const FormOptional = ({
   return (
     <>
       {isSocialInsurance && (
-        <Field name="socialInsuranceNumber">
-          {({ field, form }) => (
-            <FormControl
-              isInvalid={
-                form.errors.socialInsuranceNumber &&
-                form.touched.socialInsuranceNumber
-              }
-            >
-              <FormLabel htmlFor="social-number">
-                Social insurance number
-              </FormLabel>
-              <NumberInput id="social-number" min={0}>
-                <NumberInputField
-                  {...field}
-                  id="social-number"
-                  placeholder="Your social insurance number"
-                />
-              </NumberInput>
-              <FormErrorMessage>
-                {form.errors.socialInsuranceNumber}
-              </FormErrorMessage>
-            </FormControl>
-          )}
-        </Field>
+        <Fade in={isSocialInsurance}>
+          <Field name="socialInsuranceNumber">
+            {({ field, form }) => (
+              <FormControl
+                isInvalid={
+                  form.errors.socialInsuranceNumber &&
+                  form.touched.socialInsuranceNumber
+                }
+              >
+                <FormLabel htmlFor="social-number">
+                  Social insurance number
+                </FormLabel>
+                <NumberInput id="social-number" min={0}>
+                  <NumberInputField
+                    {...field}
+                    id="social-number"
+                    placeholder="Your social insurance number"
+                  />
+                </NumberInput>
+                <FormErrorMessage>
+                  {form.errors.socialInsuranceNumber}
+                </FormErrorMessage>
+              </FormControl>
+            )}
+          </Field>
+        </Fade>
       )}
       {isWorkingHours && (
-        <Field name="workingHours">
-          {({ field, form }) => (
-            <FormControl
-              isInvalid={form.errors.workingHours && form.touched.workingHours}
-            >
-              <FormLabel htmlFor="working-hours">Working hours</FormLabel>
-              <NumberInput id="working-hours" min={0}>
-                <NumberInputField
-                  {...field}
-                  id="working-hours"
-                  placeholder="In number of hours"
-                />
-              </NumberInput>
-              <FormErrorMessage>{form.errors.workingHours}</FormErrorMessage>
-            </FormControl>
-          )}
-        </Field>
+        <Fade in={isWorkingHours}>
+          <Field name="workingHours">
+            {({ field, form }) => (
+              <FormControl
+                isInvalid={
+                  form.errors.workingHours && form.touched.workingHours
+                }
+              >
+                <FormLabel htmlFor="working-hours">Working hours</FormLabel>
+                <NumberInput id="working-hours" min={0}>
+                  <NumberInputField
+                    {...field}
+                    id="working-hours"
+                    placeholder="In number of hours"
+                  />
+                </NumberInput>
+                <FormErrorMessage>{form.errors.workingHours}</FormErrorMessage>
+              </FormControl>
+            )}
+          </Field>
+        </Fade>
       )}
       {isNumberOfChildren && (
-        <Field name="numberOfChildren">
-          {({ field, form }) => (
-            <FormControl
-              isInvalid={
-                form.errors.numberOfChildren && form.touched.numberOfChildren
-              }
-            >
-              <FormLabel htmlFor="number-children">
-                Number of children
-              </FormLabel>
-              <NumberInput id="number-children" min={0}>
-                <NumberInputField
-                  {...field}
-                  id="number-children"
-                  placeholder="0"
-                />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              <FormErrorMessage>
-                {form.errors.numberOfChildren}
-              </FormErrorMessage>
-            </FormControl>
-          )}
-        </Field>
+        <Fade in={isNumberOfChildren}>
+          <Field name="numberOfChildren">
+            {({ field, form }) => (
+              <FormControl
+                isInvalid={
+                  form.errors.numberOfChildren && form.touched.numberOfChildren
+                }
+              >
+                <FormLabel htmlFor="number-children">
+                  Number of children
+                </FormLabel>
+                <NumberInput id="number-children" min={0}>
+                  <NumberInputField
+                    {...field}
+                    id="number-children"
+                    placeholder="0"
+                  />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
+                <FormErrorMessage>
+                  {form.errors.numberOfChildren}
+                </FormErrorMessage>
+              </FormControl>
+            )}
+          </Field>
+        </Fade>
       )}
       {isMarital && (
-        <Field name="maritalStatus">
-          {({ field, form }) => (
-            <FormControl
-              isInvalid={
-                form.errors.maritalStatus && form.touched.maritalStatus
-              }
-            >
-              <FormLabel htmlFor="marital-status">Marital status</FormLabel>
-              <Select
-                {...field}
-                id="marital-status"
-                placeholder="Select your status"
+        <Fade in={isMarital}>
+          <Field name="maritalStatus">
+            {({ field, form }) => (
+              <FormControl
+                isInvalid={
+                  form.errors.maritalStatus && form.touched.maritalStatus
+                }
               >
-                {status.map(country => (
-                  <option key={country} value={country}>
-                    {country}
-                  </option>
-                ))}
-              </Select>
-              <FormErrorMessage>{form.errors.maritalStatus}</FormErrorMessage>
-            </FormControl>
-          )}
-        </Field>
+                <FormLabel htmlFor="marital-status">Marital status</FormLabel>
+                <Select
+                  {...field}
+                  id="marital-status"
+                  placeholder="Select your status"
+                >
+                  {status.map(country => (
+                    <option key={country} value={country}>
+                      {country}
+                    </option>
+                  ))}
+                </Select>
+                <FormErrorMessage>{form.errors.maritalStatus}</FormErrorMessage>
+              </FormControl>
+            )}
+          </Field>
+        </Fade>
       )}
     </>
   );
