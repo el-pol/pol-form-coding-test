@@ -54,8 +54,20 @@ const FormCommon = () => {
       errors.holidayAllowance = 'Please enter a value';
     }
 
-    if (values.countryOfWork === 'Ghana' && !values.maritalStatus) {
+    if (
+      countriesWithMaritalStatus.includes(values.countryOfWork) &&
+      !values.maritalStatus
+    ) {
       errors.maritalStatus = 'Please select your marital status.';
+    }
+
+    if (values.countryOfWork === 'Spain' && !values.socialInsuranceNumber) {
+      errors.socialInsuranceNumber =
+        'Please enter a valid social insurance number.';
+    }
+
+    if (values.countryOfWork === 'Ghana' && !values.numberOfChildren) {
+      errors.numberOfChildren = 'Please fill out this field.';
     }
 
     return errors;
