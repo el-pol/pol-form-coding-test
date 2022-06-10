@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import { Formik, Form, Field } from 'formik';
 import {
   Button,
@@ -13,6 +14,12 @@ import {
   NumberInputField,
 } from '@chakra-ui/react';
 import FormOptional from './FormOptional';
+
+// Fixed width and height to prevent layout shifts when adding/removing elements
+const StyledForm = styled(Form)`
+  width: 350px;
+  height: 500px;
+`;
 
 const FormCommon = () => {
   const countries = ['Spain', 'Ghana', 'Brazil'];
@@ -76,7 +83,7 @@ const FormCommon = () => {
       }}
     >
       {props => (
-        <Form>
+        <StyledForm>
           <Field name="countryOfWork">
             {({ field, form }) => (
               <FormControl
@@ -180,7 +187,7 @@ const FormCommon = () => {
           >
             Submit
           </Button>
-        </Form>
+        </StyledForm>
       )}
     </Formik>
   );
