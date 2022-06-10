@@ -94,10 +94,6 @@ const FormOptional = ({
                     id="number-children"
                     placeholder="0"
                   />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
                 </NumberInput>
                 <FormErrorMessage>
                   {form.errors.numberOfChildren}

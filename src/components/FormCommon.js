@@ -159,10 +159,6 @@ const FormCommon = () => {
                     id="holiday-allowance"
                     placeholder="In number of days"
                   />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
                 </NumberInput>
                 <FormErrorMessage>
                   {form.errors.holidayAllowance}
