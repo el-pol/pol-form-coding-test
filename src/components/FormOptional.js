@@ -42,7 +42,7 @@ const FormOptional = ({
                   <NumberInputField
                     {...field}
                     id="social-number"
-                    placeholder="Your social insurance number"
+                    placeholder="111234567890"
                   />
                 </NumberInput>
                 <FormErrorMessage>
@@ -67,7 +67,7 @@ const FormOptional = ({
                   <NumberInputField
                     {...field}
                     id="working-hours"
-                    placeholder="In number of hours"
+                    placeholder="Working hours per month"
                   />
                 </NumberInput>
                 <FormErrorMessage>{form.errors.workingHours}</FormErrorMessage>
@@ -89,11 +89,7 @@ const FormOptional = ({
                   Number of children
                 </FormLabel>
                 <NumberInput id="number-children" min={0}>
-                  <NumberInputField
-                    {...field}
-                    id="number-children"
-                    placeholder="0"
-                  />
+                  <NumberInputField {...field} id="number-children" />
                 </NumberInput>
                 <FormErrorMessage>
                   {form.errors.numberOfChildren}
