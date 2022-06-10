@@ -17,7 +17,7 @@ function App() {
         <Grid minH="100vh" p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
           <VStack spacing={8}>
-            <Heading>Nice form</Heading>
+            <Heading>Omnipresent form</Heading>
             <FormCommon />
           </VStack>
         </Grid>
