@@ -23,6 +23,36 @@ test('Country selector works', async () => {
   expect(countrySelector.value).toBe(countries[1]);
 });
 
+test('Conditional fields', async () => {
+  render(<FormCommon />);
+  // When the 'Spain' country is selected, the 'social insurance number' field should be visible
+  const countrySelector = screen.getByLabelText(/country of work/i);
+  await userEvent.selectOptions(countrySelector, countries[0]);
+  expect(screen.getByLabelText(/social insurance number/i)).toBeInTheDocument();
+  // When the 'Ghana' country is selected, the 'number of children' field should be visible
+  await userEvent.selectOptions(countrySelector, countries[1]);
+  expect(screen.getByLabelText(/number of children/i)).toBeInTheDocument();
+  // When the 'Spain' country is selected, the 'number of children' field should be hidden
+  await userEvent.selectOptions(countrySelector, countries[0]);
+  expect(
+    screen.queryByLabelText(/number of children/i)
+  ).not.toBeInTheDocument();
+  // When the 'Brazil' country is selected, the 'working hours' field should be visible
+  await userEvent.selectOptions(countrySelector, countries[2]);
+  expect(screen.getByLabelText(/working hours/i)).toBeInTheDocument();
+  // When the 'Ghana' country is selected, the 'working hours' field should be hidden
+  await userEvent.selectOptions(countrySelector, countries[1]);
+  expect(screen.queryByLabelText(/working hours/i)).not.toBeInTheDocument();
+  // When either the 'Spain' or 'Ghana' country is selected, the 'marital status' field should be visible
+  await userEvent.selectOptions(countrySelector, countries[0]);
+  expect(screen.getByLabelText(/marital status/i)).toBeInTheDocument();
+  await userEvent.selectOptions(countrySelector, countries[1]);
+  expect(screen.getByLabelText(/marital status/i)).toBeInTheDocument();
+  // When neither the 'Spain' nor 'Ghana' country is selected, the 'marital status' field should be hidden
+  await userEvent.selectOptions(countrySelector, countries[2]);
+  expect(screen.queryByLabelText(/marital status/i)).not.toBeInTheDocument();
+});
+
 // test('rendering and submitting a basic Formik form', async () => {
 //   const handleSubmit = jest.fn();
 //   render(<FormCommon onSubmit={handleSubmit} />);
