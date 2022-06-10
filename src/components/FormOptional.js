@@ -43,6 +43,7 @@ const FormOptional = ({
                     {...field}
                     id="social-number"
                     placeholder="111234567890"
+                    pattern="[0-9]{12}"
                   />
                 </NumberInput>
                 <FormErrorMessage>

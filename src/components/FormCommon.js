@@ -6,9 +6,6 @@ import {
   FormLabel,
   Input,
   NumberInput,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
   FormErrorMessage,
   Select,
   NumberInputField,
@@ -61,7 +58,11 @@ const FormCommon = () => {
       errors.maritalStatus = 'Please select your marital status.';
     }
 
-    if (values.countryOfWork === 'Spain' && !values.socialInsuranceNumber) {
+    if (
+      values.countryOfWork === 'Spain' &&
+      (!values.socialInsuranceNumber ||
+        values.socialInsuranceNumber.length !== 12)
+    ) {
       errors.socialInsuranceNumber =
         'Please enter a valid social insurance number.';
     }
