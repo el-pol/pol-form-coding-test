@@ -110,7 +110,7 @@ const FormOptional = ({
               <Select
                 {...field}
                 id="marital-status"
-                placeholder="Marital status"
+                placeholder="Select your status"
               >
                 {status.map(country => (
                   <option key={country} value={country}>
