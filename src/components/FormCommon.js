@@ -11,6 +11,7 @@ import {
   NumberInputField,
 } from '@chakra-ui/react';
 import FormOptional from './FormOptional';
+import { countries } from '../utils/countries';
 
 // Fixed width and height to prevent layout shifts when adding/removing elements
 const StyledForm = styled(Form)`
@@ -19,7 +20,6 @@ const StyledForm = styled(Form)`
 `;
 
 const FormCommon = () => {
-  const countries = ['Spain', 'Ghana', 'Brazil'];
   const countriesWithMaritalStatus = ['Spain', 'Ghana'];
   const defaultDob = '2022-01-01';
 
