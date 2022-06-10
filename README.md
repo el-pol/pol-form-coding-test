@@ -1,8 +1,11 @@
 ## Choice of stack
 I chose `create-react-app` with Chakra UI. I am very comfortable working with React. I wanted the UI to look clean and not spend too much time on styling, that's also why I chose Chakra. I've used it in the past with personal projects. The goal for me was to set up something fast & usable that looks nice without too much effort, hence my choice. If this were a professional project, I would have used TypeScript as well.
 
-## Notes
+## Assumptions
 - The task said *there are three countries to handle*. But I was not sure if this meant three special cases, or three countries in total. I assumed we only have 3 options in total. You can see that in the selector we only have those three countries (Spain, Ghana, Brazil). If this is not the case, what we would do is populate the selector with a list of countries. I would have checked the Internet for a pre-made list and just added it here.
+- Working Hours field: I assumed it meant working hours per month.
+- Spain Social Security number: I assumed a pattern of `111234567890` and validated for it. Not really checking if this is a 100% valid Spanish number, just the number pattern.
+- Date of Birth field: only checking that the date is not in the future. In a professional app we could customize it and not allow them to select a date under 18 years, or any kind of validation we would need. Also, the selection is in a `String` format. I didn't want to play around with `Date` formats as it was not stated in the requirements.
 
 ## Available Scripts
 
