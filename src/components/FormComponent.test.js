@@ -60,10 +60,10 @@ test('Submitting the form with the correct values', async () => {
 
   const countrySelector = screen.getByLabelText(/country of work/i);
   await userEvent.selectOptions(countrySelector, countries[0]);
-  console.log('hey');
   const maritalSelector = screen.getByLabelText(/marital status/i);
   await userEvent.type(screen.getByLabelText(/first name/i), 'Tim');
   await userEvent.type(screen.getByLabelText(/last name/i), 'Peach');
+  await userEvent.type(screen.getByLabelText(/date of birth/i), '2020-01-01');
   await userEvent.type(screen.getByLabelText(/holiday allowance/i), '30');
   await userEvent.type(
     screen.getByLabelText(/social insurance number/i),
@@ -74,17 +74,16 @@ test('Submitting the form with the correct values', async () => {
   await userEvent.click(screen.getByRole('button', { name: /submit/i }));
 
   await waitFor(() =>
-    // expect(handleSubmit).toHaveBeenCalledWith({
-    //   countryOfWork: countries[0],
-    //   firstName: 'Tim',
-    //   lastName: 'Peach',
-    //   // dob: '2022-01-01',
-    //   holidayAllowance: '30',
-    //   socialInsuranceNumber: '000000000000',
-    //   workingHours: '',
-    //   numberOfChildren: '',
-    // maritalStatus: maritalStatus[0],
-    // })
-    expect(handleSubmit).toHaveBeenCalled()
+    expect(handleSubmit).toHaveBeenCalledWith({
+      countryOfWork: countries[0],
+      firstName: 'Tim',
+      lastName: 'Peach',
+      dob: '2020-01-01',
+      holidayAllowance: '30',
+      socialInsuranceNumber: '000000000000',
+      workingHours: '',
+      numberOfChildren: '',
+      maritalStatus: maritalStatus[0],
+    })
   );
 });
