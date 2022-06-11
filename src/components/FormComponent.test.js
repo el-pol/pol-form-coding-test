@@ -2,11 +2,11 @@ import React from 'react';
 import { screen, waitFor, debug } from '@testing-library/react';
 import { render } from '../test-utils';
 import userEvent from '@testing-library/user-event';
-import FormCommon from './FormCommon';
-import { countries } from '../utils/countries';
+import FormComponent from './FormComponent';
+import { countries, maritalStatus } from '../utils/selectors';
 
 test('Country selector works', async () => {
-  render(<FormCommon />);
+  render(<FormComponent />);
   const countrySelector = screen.getByLabelText(/country of work/i);
   await userEvent.selectOptions(countrySelector, countries[0]);
   expect(screen.getByRole('option', { name: countries[0] }).selected).toBe(
@@ -24,7 +24,7 @@ test('Country selector works', async () => {
 });
 
 test('Conditional fields', async () => {
-  render(<FormCommon />);
+  render(<FormComponent />);
   // When the 'Spain' country is selected, the 'social insurance number' field should be visible
   const countrySelector = screen.getByLabelText(/country of work/i);
   await userEvent.selectOptions(countrySelector, countries[0]);
@@ -53,22 +53,38 @@ test('Conditional fields', async () => {
   expect(screen.queryByLabelText(/marital status/i)).not.toBeInTheDocument();
 });
 
-// test('rendering and submitting a basic Formik form', async () => {
-//   const handleSubmit = jest.fn();
-//   render(<FormCommon onSubmit={handleSubmit} />);
-//   const user = userEvent.setup();
+test('Submitting the form with the correct values', async () => {
+  const handleSubmit = jest.fn();
+  render(<FormComponent onSubmit={handleSubmit} />);
+  // const user = userEvent.setup();
 
-//   await user.type(screen.getByLabelText(/first name/i), 'John');
-//   await user.type(screen.getByLabelText(/last name/i), 'Dee');
-//   await user.type(screen.getByLabelText(/email/i), 'john.dee@someemail.com');
+  const countrySelector = screen.getByLabelText(/country of work/i);
+  await userEvent.selectOptions(countrySelector, countries[0]);
+  console.log('hey');
+  const maritalSelector = screen.getByLabelText(/marital status/i);
+  await userEvent.type(screen.getByLabelText(/first name/i), 'Tim');
+  await userEvent.type(screen.getByLabelText(/last name/i), 'Peach');
+  await userEvent.type(screen.getByLabelText(/holiday allowance/i), '30');
+  await userEvent.type(
+    screen.getByLabelText(/social insurance number/i),
+    '000000000000'
+  );
+  await userEvent.selectOptions(maritalSelector, maritalStatus[0]);
 
-//   await user.click(screen.getByRole('button', { name: /submit/i }));
+  await userEvent.click(screen.getByRole('button', { name: /submit/i }));
 
-//   await waitFor(() =>
-//     expect(handleSubmit).toHaveBeenCalledWith({
-//       email: 'john.dee@someemail.com',
-//       firstName: 'John',
-//       lastName: 'Dee',
-//     })
-//   );
-// });
+  await waitFor(() =>
+    // expect(handleSubmit).toHaveBeenCalledWith({
+    //   countryOfWork: countries[0],
+    //   firstName: 'Tim',
+    //   lastName: 'Peach',
+    //   // dob: '2022-01-01',
+    //   holidayAllowance: '30',
+    //   socialInsuranceNumber: '000000000000',
+    //   workingHours: '',
+    //   numberOfChildren: '',
+    // maritalStatus: maritalStatus[0],
+    // })
+    expect(handleSubmit).toHaveBeenCalled()
+  );
+});
