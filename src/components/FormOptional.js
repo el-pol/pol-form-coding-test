@@ -8,6 +8,7 @@ import {
   NumberInputField,
   Fade,
 } from '@chakra-ui/react';
+import { maritalStatus } from '../utils/selectors';
 
 const FormOptional = ({
   isSocialInsurance,
@@ -15,9 +16,6 @@ const FormOptional = ({
   isWorkingHours,
   isNumberOfChildren,
 }) => {
-  // Typical values, can be changed to whatever you want
-  const status = ['Married', 'Single', 'Divorced'];
-
   return (
     <>
       {isSocialInsurance && (
@@ -110,9 +108,9 @@ const FormOptional = ({
                   id="marital-status"
                   placeholder="Select your status"
                 >
-                  {status.map(country => (
-                    <option key={country} value={country}>
-                      {country}
+                  {maritalStatus.map(status => (
+                    <option key={status} value={status}>
+                      {status}
                     </option>
                   ))}
                 </Select>
