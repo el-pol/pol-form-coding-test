@@ -15,6 +15,13 @@ const FormComponent = () => {
   const defaultDob = '2022-01-01';
   const countriesWithMaritalStatus = ['Spain', 'Ghana'];
 
+  const handleSubmit = (values, actions) => {
+    setTimeout(() => {
+      console.log(JSON.stringify(values, null, 2));
+      actions.setSubmitting(false);
+    }, 1000);
+  };
+
   return (
     <Formik
       initialValues={{
@@ -29,12 +36,7 @@ const FormComponent = () => {
         maritalStatus: '',
       }}
       validate={handleValidation}
-      onSubmit={(values, actions) => {
-        setTimeout(() => {
-          console.log(JSON.stringify(values, null, 2));
-          actions.setSubmitting(false);
-        }, 1000);
-      }}
+      onSubmit={handleSubmit}
     >
       {props => (
         <>
