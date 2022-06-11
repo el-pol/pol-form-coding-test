@@ -8,7 +8,7 @@ import {
   Select,
   NumberInputField,
 } from '@chakra-ui/react';
-import { countries } from '../utils/countries';
+import { countries } from '../utils/selectors';
 
 const FormCommon = () => {
   return (
