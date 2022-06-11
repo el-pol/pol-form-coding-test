@@ -23,6 +23,7 @@ const FormOptional = ({
           <Field name="socialInsuranceNumber">
             {({ field, form }) => (
               <FormControl
+                mt={4}
                 isInvalid={
                   form.errors.socialInsuranceNumber &&
                   form.touched.socialInsuranceNumber
@@ -52,6 +53,7 @@ const FormOptional = ({
           <Field name="workingHours">
             {({ field, form }) => (
               <FormControl
+                mt={4}
                 isInvalid={
                   form.errors.workingHours && form.touched.workingHours
                 }
@@ -75,6 +77,7 @@ const FormOptional = ({
           <Field name="numberOfChildren">
             {({ field, form }) => (
               <FormControl
+                mt={4}
                 isInvalid={
                   form.errors.numberOfChildren && form.touched.numberOfChildren
                 }
@@ -98,6 +101,7 @@ const FormOptional = ({
           <Field name="maritalStatus">
             {({ field, form }) => (
               <FormControl
+                mt={4}
                 isInvalid={
                   form.errors.maritalStatus && form.touched.maritalStatus
                 }

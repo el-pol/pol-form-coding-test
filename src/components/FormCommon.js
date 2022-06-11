@@ -37,6 +37,7 @@ const FormCommon = () => {
       <Field name="firstName">
         {({ field, form }) => (
           <FormControl
+            mt={4}
             isInvalid={form.errors.firstName && form.touched.firstName}
           >
             <FormLabel htmlFor="country-of-work">First name</FormLabel>
@@ -48,6 +49,7 @@ const FormCommon = () => {
       <Field name="lastName">
         {({ field, form }) => (
           <FormControl
+            mt={4}
             isInvalid={form.errors.lastName && form.touched.lastName}
           >
             <FormLabel htmlFor="last-name">Last name</FormLabel>
@@ -58,7 +60,7 @@ const FormCommon = () => {
       </Field>
       <Field name="dob">
         {({ field, form }) => (
-          <FormControl isInvalid={form.errors.dob && form.touched.dob}>
+          <FormControl isInvalid={form.errors.dob && form.touched.dob} mt={4}>
             <FormLabel htmlFor="dob">Date of birth</FormLabel>
             <Input
               type="date"
@@ -73,6 +75,7 @@ const FormCommon = () => {
       <Field name="holidayAllowance">
         {({ field, form }) => (
           <FormControl
+            mt={4}
             isInvalid={
               form.errors.holidayAllowance && form.touched.holidayAllowance
             }

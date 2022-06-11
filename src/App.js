@@ -1,5 +1,4 @@
 import React from 'react';
-import { Formik, Form, Field } from 'formik';
 import {
   ChakraProvider,
   Box,
@@ -8,7 +7,6 @@ import {
   theme,
   Heading,
 } from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
 import FormComponent from './components/FormComponent';
 
 function App() {
@@ -16,8 +14,7 @@ function App() {
     <ChakraProvider theme={theme}>
       <Box textAlign="center" fontSize="xl">
         <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
+          <VStack spacing={8} mt={[4, 8]}>
             <Heading>Omnipresent form</Heading>
             <FormComponent />
           </VStack>
