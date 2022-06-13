@@ -12,7 +12,7 @@ import FormCommon from './FormCommon';
 // Fixed width and height to prevent layout shifts when adding/removing elements
 const StyledForm = styled(Form)`
   width: 350px;
-  height: 500px;
+  height: 100%;
 `;
 
 const FormComponent = () => {
@@ -90,7 +90,7 @@ const FormComponent = () => {
               selectedCountry={props.values.countryOfWork}
             />
             <Button
-              mt={4}
+              my={4}
               colorScheme="teal"
               isLoading={props.isSubmitting}
               type="submit"
