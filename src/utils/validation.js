@@ -1,3 +1,5 @@
+import { isAfter } from 'date-fns';
+
 export const countriesWithMaritalStatus = ['Spain', 'Ghana'];
 export const defaultDob = '2022-01-01';
 
@@ -14,6 +16,11 @@ export const handleValidation = values => {
   }
   if (values.dob === defaultDob) {
     errors.dob = 'Please enter your date of birth.';
+  }
+
+  if (isAfter(new Date(values.dob), new Date())) {
+    errors.dob =
+      'The date cannot be set in the future. Please enter a valid date.';
   }
 
   if (values.countryOfWork === 'Spain' && values.holidayAllowance < 30) {

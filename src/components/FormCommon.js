@@ -9,6 +9,7 @@ import {
   NumberInputField,
 } from '@chakra-ui/react';
 import { countries } from '../utils/selectors';
+import { startOfToday, format } from 'date-fns';
 
 const FormCommon = () => {
   return (
@@ -67,6 +68,7 @@ const FormCommon = () => {
             <Input
               type="date"
               {...field}
+              max={format(startOfToday(), 'yyyy-MM-dd')}
               id="dob"
               placeholder="Date of birth"
             />
