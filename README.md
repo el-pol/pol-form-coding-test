@@ -1,11 +1,22 @@
 ## Choice of stack
-I chose `create-react-app` with Chakra UI. I am very comfortable working with React. I wanted the UI to look clean and not spend too much time on styling, that's also why I chose Chakra. I've used it in the past with personal projects. The goal for me was to set up something fast & usable that looks nice without too much effort, hence my choice. If this were a professional project, I would have used TypeScript as well.
+- [create-react-app](https://create-react-app.dev/) with [Chakra UI](https://chakra-ui.com/). I am very comfortable working with React. I wanted the UI to look clean and not spend too much time on styling, that's also why I chose Chakra. I've used it in the past with personal projects. The goal for me was to set up something fast & usable that looks nice without too much effort, hence my choice. If this were a professional project, I would have used TypeScript as well. Due to time constraints I chose not to.
+
+- [Formik](https://formik.org/) to build the form. It's a very popular library I have used before in a large-scale project. In a small test like this, it was not needed. But if this were a real app, I would have chosen Formik. Why? Forms always tend to grow bigger and include more and more validations. I think it's better to think & choose the correct tool before it's too late. I wanted to make the app as professional-looking as possible, while spending the least possible time on it.
+
+- [date-fns](https://date-fns.org/) to play around with dates: mostly for the `date of birth` field. This is a very small library that makes date handling extremely easy. I use it here to compare present & past dates, to ensure the birthdate is not set in the future.
+
+- [testing-library](https://testing-library.com/docs/) as the assertion library, and [Jest](https://jestjs.io/) as the test runner. These are popular tools in the React ecosystem, both of them I have used in the past and feel comfortable using them.
+
+## Live version
+Please find a hosted version of the app here: [https://delightful-pixie-687d0e.netlify.app/](https://delightful-pixie-687d0e.netlify.app/)
 
 ## Assumptions
 - The task said *there are three countries to handle*. But I was not sure if this meant three special cases, or three countries in total. I assumed we only have 3 options in total. You can see that in the selector we only have those three countries (Spain, Ghana, Brazil). If this is not the case, what we would do is populate the selector with a list of countries. I would have checked the Internet for a pre-made list and just added it here.
 - Working Hours field: I assumed it meant working hours per month.
-- Spain Social Security number: I assumed a pattern of `111234567890` and validated for it. Not really checking if this is a 100% valid Spanish number, just the number pattern.
+- Spain Social Security number: I assumed a pattern of `111234567890` and validated for it. Not really checking if this is a 100% valid Spanish number, just that it is 12 numbers long.
 - Date of Birth field: only checking that the date is not in the future. In a professional app we could customize it and not allow them to select a date under 18 years, or any kind of validation we would need. Also, the selection is in a `String` format. I didn't want to play around with `Date` formats as it was not stated in the requirements.
+- I just wrote a few test examples, not 100% coverage. In a real app with more time, we would have strived to have good coverage or at least cover the critical parts.
+- We sent all the fields as `String`. Some are numeric. There was no requirement - in some backends the devs expect `Number` or `String`, in this case, I didn't worry about that.
 
 ## Available Scripts
 
@@ -34,42 +45,5 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
