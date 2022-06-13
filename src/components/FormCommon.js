@@ -40,7 +40,7 @@ const FormCommon = () => {
             mt={4}
             isInvalid={form.errors.firstName && form.touched.firstName}
           >
-            <FormLabel htmlFor="country-of-work">First name</FormLabel>
+            <FormLabel htmlFor="first-name">First name</FormLabel>
             <Input {...field} id="first-name" placeholder="John" />
             <FormErrorMessage>{form.errors.firstName}</FormErrorMessage>
           </FormControl>
