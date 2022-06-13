@@ -2,7 +2,11 @@ import styled from '@emotion/styled';
 import { Formik, Form } from 'formik';
 import { Button, useToast } from '@chakra-ui/react';
 import FormOptional from './FormOptional';
-import { handleValidation } from '../utils/validation';
+import {
+  countriesWithMaritalStatus,
+  defaultDob,
+  handleValidation,
+} from '../utils/validation';
 import FormCommon from './FormCommon';
 
 // Fixed width and height to prevent layout shifts when adding/removing elements
@@ -13,8 +17,6 @@ const StyledForm = styled(Form)`
 
 const FormComponent = () => {
   const toast = useToast();
-  const defaultDob = '2022-01-01';
-  const countriesWithMaritalStatus = ['Spain', 'Ghana'];
 
   const handleSubmit = (values, actions) => {
     // We already handle invalid fields with our validation

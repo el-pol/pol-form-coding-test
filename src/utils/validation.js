@@ -1,5 +1,5 @@
-const countriesWithMaritalStatus = ['Spain', 'Ghana'];
-const defaultDob = '2022-01-01';
+export const countriesWithMaritalStatus = ['Spain', 'Ghana'];
+export const defaultDob = '2022-01-01';
 
 export const handleValidation = values => {
   const errors = {};
@@ -42,7 +42,7 @@ export const handleValidation = values => {
       values.socialInsuranceNumber.length !== 12)
   ) {
     errors.socialInsuranceNumber =
-      'Please enter a valid social insurance number.';
+      'Please enter a valid social insurance number. Your number should be 12 digits long.';
   }
 
   if (values.countryOfWork === 'Ghana' && !values.numberOfChildren) {
