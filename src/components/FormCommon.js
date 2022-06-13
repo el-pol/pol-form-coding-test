@@ -83,12 +83,13 @@ const FormCommon = () => {
             }
           >
             <FormLabel htmlFor="holiday-allowance">Holiday allowance</FormLabel>
-            <NumberInput id="holiday-allowance" min={0}>
-              <NumberInputField
-                {...field}
-                id="holiday-allowance"
-                placeholder="In number of days"
-              />
+            <NumberInput
+              {...field}
+              id="holiday-allowance"
+              onChange={val => form.setFieldValue(field.name, val)}
+              min={0}
+            >
+              <NumberInputField placeholder="In number of days" />
             </NumberInput>
             <FormErrorMessage>{form.errors.holidayAllowance}</FormErrorMessage>
           </FormControl>
