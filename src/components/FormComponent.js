@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Formik, Form } from 'formik';
-import { Button } from '@chakra-ui/react';
+import { Button, useToast } from '@chakra-ui/react';
 import FormOptional from './FormOptional';
 import { handleValidation } from '../utils/validation';
 import FormCommon from './FormCommon';
@@ -12,6 +12,7 @@ const StyledForm = styled(Form)`
 `;
 
 const FormComponent = () => {
+  const toast = useToast();
   const defaultDob = '2022-01-01';
   const countriesWithMaritalStatus = ['Spain', 'Ghana'];
 
@@ -28,6 +29,14 @@ const FormComponent = () => {
     setTimeout(() => {
       console.log(JSON.stringify(valuesWithoutEmptyFields, null, 2));
       actions.setSubmitting(false);
+      toast({
+        title: 'Form successfully submitted!',
+        description: 'One of our agents will be in touch soon.',
+        status: 'success',
+        position: 'top',
+        duration: 9000,
+        isClosable: true,
+      });
       actions.resetForm();
     }, 1000);
   };
