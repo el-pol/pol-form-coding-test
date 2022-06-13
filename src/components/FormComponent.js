@@ -69,7 +69,7 @@ const FormComponent = () => {
         holidayAllowance: '',
         socialInsuranceNumber: '',
         workingHours: '',
-        numberOfChildren: '',
+        numberOfChildren: '0',
         maritalStatus: '',
       }}
       validate={handleValidation}

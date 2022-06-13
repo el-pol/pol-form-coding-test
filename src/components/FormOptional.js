@@ -85,8 +85,13 @@ const FormOptional = ({
                 <FormLabel htmlFor="number-children">
                   Number of children
                 </FormLabel>
-                <NumberInput id="number-children" min={0}>
-                  <NumberInputField {...field} id="number-children" />
+                <NumberInput
+                  {...field}
+                  id="number-children"
+                  onChange={val => form.setFieldValue(field.name, val)}
+                  min={0}
+                >
+                  <NumberInputField placeholder="Number of children" />
                 </NumberInput>
                 <FormErrorMessage>
                   {form.errors.numberOfChildren}
