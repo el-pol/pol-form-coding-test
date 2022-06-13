@@ -19,9 +19,25 @@ const FormComponent = () => {
   const handleSubmit = (values, actions) => {
     // We already handle invalid fields with our validation
     // Here we only clean up the form so we don't submit empty fields
+    const selectedCountry = values.countryOfWork;
     const valuesWithoutEmptyFields = Object.keys(values).reduce((acc, key) => {
       if (values[key]) {
         acc[key] = values[key];
+      }
+      if (selectedCountry !== 'Spain' && key === 'socialInsuranceNumber') {
+        return acc;
+      }
+      if (selectedCountry !== 'Ghana' && key === 'numberOfChildren') {
+        return acc;
+      }
+      if (selectedCountry !== 'Brazil' && key === 'workingHours') {
+        return acc;
+      }
+      if (
+        !countriesWithMaritalStatus.includes(selectedCountry) &&
+        key === 'maritalStatus'
+      ) {
+        return acc;
       }
       return acc;
     }, {});
