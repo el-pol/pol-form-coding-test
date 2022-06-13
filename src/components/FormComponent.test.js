@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, waitFor, debug } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import { render } from '../test-utils';
 import userEvent from '@testing-library/user-event';
 import FormComponent from './FormComponent';
@@ -55,37 +55,24 @@ test('Conditional fields', async () => {
   expect(screen.queryByLabelText(/marital status/i)).not.toBeInTheDocument();
 });
 
-test('Submitting the form with the correct values', async () => {
-  const handleSubmit = jest.fn();
-  render(<FormComponent onSubmit={handleSubmit} />);
+test('Shows errors when fields are missing', async () => {
+  render(<FormComponent />);
   const user = userEvent.setup();
 
   const countrySelector = screen.getByLabelText(/country of work/i);
   await user.selectOptions(countrySelector, countries[0]);
-  const maritalSelector = screen.getByLabelText(/marital status/i);
-  await user.type(screen.getByLabelText(/first name/i), 'Tim');
-  await user.type(screen.getByLabelText(/last name/i), 'Peach');
-  await user.type(screen.getByLabelText(/date of birth/i), '2020-01-01');
-  await user.type(screen.getByLabelText(/holiday allowance/i), '30');
-  await user.type(
-    screen.getByLabelText(/social insurance number/i),
-    '000000000000'
-  );
-  await user.selectOptions(maritalSelector, maritalStatus[0]);
 
   await user.click(screen.getByRole('button', { name: /submit/i }));
 
-  await waitFor(() =>
-    expect(handleSubmit).toHaveBeenCalledWith({
-      countryOfWork: countries[0],
-      firstName: 'Tim',
-      lastName: 'Peach',
-      dob: '2020-01-01',
-      holidayAllowance: '30',
-      socialInsuranceNumber: '000000000000',
-      workingHours: '',
-      numberOfChildren: '',
-      maritalStatus: maritalStatus[0],
-    })
-  );
+  await waitFor(() => {
+    expect(screen.getByTestId('firstNameError')).not.toBe(null);
+    expect(screen.getByTestId('firstNameError')).toHaveTextContent(
+      'Please enter your first name.'
+    );
+    // For Spain, social insurance number field is required
+    expect(screen.getByTestId('socialInsuranceNumberError')).not.toBe(null);
+    expect(screen.getByTestId('socialInsuranceNumberError')).toHaveTextContent(
+      'Please enter a valid social insurance number.'
+    );
+  });
 });

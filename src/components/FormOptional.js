@@ -40,7 +40,7 @@ const FormOptional = ({
                     pattern="[0-9]{12}"
                   />
                 </NumberInput>
-                <FormErrorMessage>
+                <FormErrorMessage data-testid="socialInsuranceNumberError">
                   {form.errors.socialInsuranceNumber}
                 </FormErrorMessage>
               </FormControl>

@@ -42,7 +42,9 @@ const FormCommon = () => {
           >
             <FormLabel htmlFor="first-name">First name</FormLabel>
             <Input {...field} id="first-name" placeholder="John" />
-            <FormErrorMessage>{form.errors.firstName}</FormErrorMessage>
+            <FormErrorMessage data-testid="firstNameError">
+              {form.errors.firstName}
+            </FormErrorMessage>
           </FormControl>
         )}
       </Field>
