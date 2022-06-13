@@ -16,9 +16,19 @@ const FormComponent = () => {
   const countriesWithMaritalStatus = ['Spain', 'Ghana'];
 
   const handleSubmit = (values, actions) => {
+    // We already handle invalid fields with our validation
+    // Here we only clean up the form so we don't submit empty fields
+    const valuesWithoutEmptyFields = Object.keys(values).reduce((acc, key) => {
+      if (values[key]) {
+        acc[key] = values[key];
+      }
+      return acc;
+    }, {});
+
     setTimeout(() => {
-      console.log(JSON.stringify(values, null, 2));
+      console.log(JSON.stringify(valuesWithoutEmptyFields, null, 2));
       actions.setSubmitting(false);
+      actions.resetForm();
     }, 1000);
   };
 
