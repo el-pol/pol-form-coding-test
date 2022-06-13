@@ -26,7 +26,7 @@ export const handleValidation = values => {
     errors.holidayAllowance =
       'Please enter a value smaller than 40 if your country is Brazil.';
   } else if (!values.holidayAllowance) {
-    errors.holidayAllowance = 'Please enter a value';
+    errors.holidayAllowance = 'Please enter a value.';
   }
 
   if (
