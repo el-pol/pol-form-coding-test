@@ -5,6 +5,6 @@ import App from './App';
 
 test('Renders a heading', () => {
   render(<App />);
-  const linkElement = screen.getByText(/omnipresent form/i);
+  const linkElement = screen.getByText(/fakeco form/i);
   expect(linkElement).toBeInTheDocument();
 });
